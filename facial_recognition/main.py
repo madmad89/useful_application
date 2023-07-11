@@ -57,12 +57,12 @@ if __name__ == '__main__':
     people_analyzer(analyze_result)
 
     web_capture()
-    obj = DeepFace.verify(img1_path="pictures/Madalin.png",
+    obj = DeepFace.verify(img1_path=picture_path,
                           img2_path="capture.png",
                           model_name='VGG-Face'
                           )
     print(obj)
     if obj['verified']:
-        print(f'{picture_path} Welcome!')
+        print(f'Welcome !')
     else:
-        print('not you!')
+        print('Your are not registered!')
