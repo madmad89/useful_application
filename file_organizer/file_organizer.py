@@ -8,7 +8,7 @@
 #
 # OUTPUT:
 #     - Move files in the specific folder
-# snake_case -> first_name
+
 
 import os
 import shutil
@@ -57,7 +57,7 @@ def map_extension_to_folder(path: str) -> dict:
     #     return file_extension
     # else:
     #     return 'no extension'
-    ###### varianta 2 ##########
+    # # varianta 2 #
     # index = file.rfind('.')
     # print(index)
     # if index != -1:
@@ -65,7 +65,7 @@ def map_extension_to_folder(path: str) -> dict:
     # else:
     #     return 'no extension'
 
-    ###### varianta 3 ##########
+    # # varianta 3 #
     extension_mapping = {path + '\\' + dir: FILE_EXT_TYPES[i] for i, dir in enumerate(DIR_TYPES)}
     return extension_mapping
 
@@ -79,7 +79,7 @@ if __name__ == '__main__':
                  ]
 
     # Predefined file extension types
-    FILE_EXT_TYPES = [['.jpg', '.jpeg', '.png', '.JPG'], ['.mp4', '.mov', '.MOV', '.avi'], ['.pdf', '.PDF'],
+    FILE_EXT_TYPES = [['.jpg', '.jpeg', '.png', '.JPG'], ['.mp4', 'MP4', '.mov', '.MOV', '.avi'], ['.pdf', '.PDF'],
                       '.mp3', '.txt', '.py',
                       ['.doc', '.docx'], ['.csv', '.xlsx', 'xls'], '.exe',
                       ['.7z', '.zip'], '.cdr'
@@ -101,4 +101,3 @@ if __name__ == '__main__':
                     shutil.move(path + '\\' + file, k)
                 except:
                     print(file + ' cannot be moved!')
-
