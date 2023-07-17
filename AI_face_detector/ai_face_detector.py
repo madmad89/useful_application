@@ -27,13 +27,16 @@ capture = PictureCapture()
 picture_path = capture.capture_and_save("example")
 print(f"Picture saved at: {picture_path}")
 
+# Create Classifier
 face_classifier = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 eye_classifier = cv2.CascadeClassifier('haarcascade_eye.xml')
 
+# Read image, Convert to Grayscale, Run Classifier
 image = cv2.imread('pictures/example.jpg')
 image_gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 face = face_classifier.detectMultiScale(image_gray, 1.1, 4)
 
+# Create Rectangles
 for (x, y, w, h) in face:
     cv2.rectangle(image, (x, y), (x + w, y + h), (255, 255, 0), 2)
     roi_gray = image_gray[y:y + h, x:x + w]
@@ -42,5 +45,12 @@ for (x, y, w, h) in face:
     for (ex, ey, ew, eh) in eyes:
         cv2.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (0, 127, 255), 2)
 
+# Show Finale Image
 cv2.imshow('img', image)
 cv2.waitKey()
+
+
+# Module used from:
+# github.com/opencv/opencvblob/master/data/haarcascades/
+# haarcascade_frontalface_default.xml
+# haarcascade_eye.xml
